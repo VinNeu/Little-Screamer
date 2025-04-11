@@ -7,9 +7,11 @@ MIN_TIME = 1 # Minimum time between jumpscares
 MAX_TIME = 30 # Maximum time between jumpscares
 EXE_DEST_PATH = "" # Path where exe should be stored on victim pc
 ```
+# Pictures
+Pictures dont need to be downloaded all that is needed to encode them into base64 and put as strings in "images" variable
+
 
 # Setup
-
 
 ```python
 git clone https://github.com/VinNeu/Little-Screamer.git
