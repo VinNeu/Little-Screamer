@@ -1,0 +1,4 @@
+tkinter
+Pillow
+winshell
+auto-py-to-exe

