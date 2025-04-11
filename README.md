@@ -1,6 +1,9 @@
 # Little Screamer
 All in one simple python program that will show image in time duration
 
+By default program will run on every startup of system. To disable it 
+go to startup in Roaming folder and remove shortcut
+
 ```
 POPUP_DURATION = 200 # How long picture will be visible
 MIN_TIME = 1 # Minimum time between jumpscares
